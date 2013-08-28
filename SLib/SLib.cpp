@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "SVector.h"
+#include "container/SVector.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])

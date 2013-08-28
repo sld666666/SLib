@@ -45,7 +45,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -221,10 +221,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SVector.h"
-				>
-			</File>
-			<File
 				RelativePath=".\targetver.h"
 				>
 			</File>
@@ -251,6 +247,10 @@
 			<Filter
 				Name="container"
 				>
+				<File
+					RelativePath=".\container\SVector.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="algorithm"

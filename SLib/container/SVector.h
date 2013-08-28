@@ -15,8 +15,7 @@ public:
 public:
 	void pushBack(const T& val);
 private:
-	void inserOverflow();
-
+	void inserOverflow(T* pos, const T& x, size_t fillLen);
 private:
 	T*	begin_;
 	T*	end_;
@@ -31,6 +30,12 @@ void SVector<T>::pushBack(const T& val)
 	}else{
 		
 	}
+}
+
+template <typename T>
+void SVector<T>::inserOverflow(T* pos, const T& x, size_t fillLen)
+{
+
 }
 
 #endif

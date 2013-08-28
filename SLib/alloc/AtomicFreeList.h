@@ -1,5 +1,6 @@
 #ifndef ALLOC_ATOMICFREELIST_H
 #define ALLOC_ATOMICFREELIST_H
+#include "windows.h"
 #include "winnt.h"
 
 class AtomicFreeList
