@@ -217,6 +217,10 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\config.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
@@ -232,7 +236,27 @@
 					>
 				</File>
 				<File
+					RelativePath=".\AllocProxy.h"
+					>
+				</File>
+				<File
 					RelativePath=".\alloc\AtomicFreeList.h"
+					>
+				</File>
+				<File
+					RelativePath=".\alloc\Construct.h"
+					>
+				</File>
+				<File
+					RelativePath=".\alloc\Defalloc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\alloc\DefaultAlloc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\alloc\MallocAlloc.h"
 					>
 				</File>
 				<File
@@ -243,18 +267,54 @@
 					RelativePath=".\alloc\NodeAllocImpl.h"
 					>
 				</File>
+				<File
+					RelativePath=".\alloc\SimpleAlloc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\alloc\TypeTraits.h"
+					>
+				</File>
+				<File
+					RelativePath=".\alloc\uninitialized.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="container"
 				>
 				<File
-					RelativePath=".\container\SVector.h"
+					RelativePath=".\container\BaseVector.h"
+					>
+				</File>
+				<File
+					RelativePath=".\container\TypeDefinition.h"
+					>
+				</File>
+				<File
+					RelativePath=".\container\Vector.h"
 					>
 				</File>
 			</Filter>
 			<Filter
 				Name="algorithm"
 				>
+			</Filter>
+			<Filter
+				Name="testor"
+				>
+				<File
+					RelativePath=".\testor\AllocatorTestor.h"
+					>
+				</File>
+				<File
+					RelativePath=".\testor\UnInitializedTestor.h"
+					>
+				</File>
+				<File
+					RelativePath=".\testor\VectorTestor.h"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
