@@ -27,9 +27,9 @@ namespace slib{
 
 	protected:
 		void	auxInsert(T* positon, const T& value);
-		T*		insert(size_t length, T* positon, const T& value);
+		T*		insert(size_t length, T* pbositon, const T& value);
 		size_t	size() const;
-		void	objDestroy(T* data);
+		void	mDestroy(T* data);
 		void	objDestroy(T* begin, T* end);
 	protected:
 		T*	begin_;
@@ -83,10 +83,9 @@ namespace slib{
 	}
 
 	template <typename T, typename Alloc>
-	void BaseVector<T, Alloc>::objDestroy(T* data)
+	void BaseVector<T, Alloc>::mDestroy(T* data)
 	{
 		destroy(data);
-		DataAllocator::deallocate(data);
 	}
 
 	template <typename T, typename Alloc>

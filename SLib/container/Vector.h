@@ -13,7 +13,7 @@ namespace slib{
 		Vector(const SizeType n,  const T& value);
 
 		Reference operator[](SizeType n){return *(begin()+n);}
-		~Vector(){Base::objDestroy(begin_, end_);}
+		~Vector(){Base::objDestroy(begin_, endOfStorage_);}
 	public:
 		Iterator	begin();
 		Iterator	begin() const;
@@ -99,7 +99,7 @@ namespace slib{
 	void Vector<T, Alloc>::pop_back()
 	{
 		--end_;
-		objDestroy(end_);
+		Base::mDestroy(end_);
 	}
 
 	template<typename T, typename Alloc>
@@ -119,7 +119,7 @@ namespace slib{
 			copy(pos+1, end_, pos);
 		}
 		--end_;
-		objDestroy(end_);
+		Base::mDestroy(end_);
 		return pos;
 	}
 
@@ -129,8 +129,9 @@ namespace slib{
 								, Iterator last)
 	{
 		Iterator pos = copy(last, end_, first);
-		objDestroy(pos, end_);
+		Base::objDestroy(pos, end_);
 		end_ = end_ - (last - first);
+		return pos;
 	}
 
 	template<typename T, typename Alloc>
