@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE (testCopy)
 	int* begin = ary;
 	int* end = ary+3;
 	int* result = ary+3;
-	result = uninitialized_copy<int* ,int*, int*>(begin, end, result);
+	result = slib::uninitialized_copy<int*, int*, int*>(begin, end, result);
 	BOOST_CHECK(1==ary[4]);
 	BOOST_CHECK(ary[5]==*(result-1));
 }
@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(testCopy2)
 	Test* begin = tests;
 	Test* end = tests + 3;
 	Test* result = tests + 3;
-	uninitialized_copy<Test*, Test*, Test*>(begin, end, result);
+	slib::uninitialized_copy<Test*, Test*, Test*>(begin, end, result);
 	BOOST_CHECK(1==tests[4].a);
 }
 
@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE(testCopy3)
 	Test* begin = tests;
 	Test* end = tests + 3;
 	Test* result = tests + 3;
-	uninitialized_copy<Test*, Test*, Test>(begin, end, result);
+	slib::uninitialized_copy<Test*, Test*, Test>(begin, end, result);
 	BOOST_CHECK(1==tests[4].a);
 }
 

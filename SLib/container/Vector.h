@@ -1,25 +1,31 @@
 #pragma once
 #include "BaseVector.h"
 #include "TypeDefinition.h"
+#include "alloc/DefaultAlloc.h"
 
 namespace slib{
-	template <typename T, typename Alloc = DefaultAlloc>
+	template <typename T, typename Alloc = slib::DefaultAlloc<false, 0>>
 	class Vector : public BaseVector<T, Alloc>
 		, public TypeDefinition<T>{
 
 	public:
 		Vector(): Base(){}
 		Vector(const SizeType n,  const T& value);
+
+		Reference operator[](SizeType n){return *(begin()+n);}
+		~Vector(){Base::objDestroy(begin_, end_);}
 	public:
 		Iterator	begin();
+		Iterator	begin() const;
 		Iterator	end();
+		Iterator	end() const;
 
 		SizeType	size() const;
 		SizeType	capacity() const;
 		bool		empty() const;
 
-		void		pushback(const T& val);
-		void		popback();
+		void		push_back(const T& val);
+		void		pop_back();
 
 		Iterator	insert(Iterator pos, const T& val);
 		Iterator	erase(Iterator pos);
@@ -52,16 +58,28 @@ namespace slib{
 		return end_;
 	}
 
+	template <typename T, typename Alloc>
+	typename Vector<T, Alloc>::Iterator  Vector<T, Alloc>::begin() const
+	{
+		return begin_;
+	}
+
+	template <typename T, typename Alloc>
+	typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::end() const
+	{
+		return end_;
+	}
+
 	template<typename T, typename Alloc>
 	typename Vector<T, Alloc>::SizeType Vector<T, Alloc>::size() const 
 	{
-		return (end() - begin());
+		return SizeType(end() - begin());
 	}
 
 	template<typename T, typename Alloc>
 	typename Vector<T, Alloc>::SizeType Vector<T, Alloc>::capacity() const
 	{
-		return (endOfStorage_ - begin());
+		return SizeType(endOfStorage_ - begin());
 	}
 
 	template<typename T, typename Alloc>
@@ -72,16 +90,16 @@ namespace slib{
 
 
 	template<typename T, typename Alloc>
-	void Vector<T, Alloc>::pushback(const T& val)
+	void Vector<T, Alloc>::push_back(const T& val)
 	{
 		insert(end(), val);
 	}
 
 	template<typename T, typename Alloc>
-	void Vector<T, Alloc>::popback()
+	void Vector<T, Alloc>::pop_back()
 	{
 		--end_;
-		destroy(end_);
+		objDestroy(end_);
 	}
 
 	template<typename T, typename Alloc>
@@ -90,6 +108,7 @@ namespace slib{
 								 , const T& val)
 	{
 		Base::auxInsert(pos, val);
+		return end_;
 	}
 
 	template<typename T, typename Alloc>
@@ -100,7 +119,7 @@ namespace slib{
 			copy(pos+1, end_, pos);
 		}
 		--end_;
-		destroy(end_);
+		objDestroy(end_);
 		return pos;
 	}
 
@@ -110,7 +129,7 @@ namespace slib{
 								, Iterator last)
 	{
 		Iterator pos = copy(last, end_, first);
-		destroy(pos, end_);
+		objDestroy(pos, end_);
 		end_ = end_ - (last - first);
 	}
 

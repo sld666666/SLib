@@ -2,6 +2,7 @@
 #define  CONTAINER_SBASEVECTOR_H
 #include "../alloc/SimpleAlloc.h"
 #include "../alloc/Construct.h"
+#include "../alloc/uninitialized.h"
 
 namespace slib{
 	template <typename T, typename Alloc>
@@ -26,9 +27,10 @@ namespace slib{
 
 	protected:
 		void	auxInsert(T* positon, const T& value);
-		void	insert(T* newbegin, T* positon, const T& value);
+		T*		insert(size_t length, T* positon, const T& value);
 		size_t	size() const;
-
+		void	objDestroy(T* data);
+		void	objDestroy(T* begin, T* end);
 	protected:
 		T*	begin_;
 		T*	end_;
@@ -48,32 +50,50 @@ namespace slib{
 			*positon = value;
 		}else{
 			const size_t length =  (0 ==size())? 2 : 2*size();
-			T* newbegin = DataAllocator::allocate(length);
-			insert(newbegin, positon, value);
+			
+			T* newbegin =insert(length, positon, value);
 
 			endOfStorage_ = newbegin + length;
 		}
 	}
 
 	template <typename T, typename Alloc>
-	void BaseVector<T, Alloc>::insert(T* newbegin
-										, T* positon
-										, const T& value)
+	T*  BaseVector<T, Alloc>::insert(size_t length
+									 , T* positon
+									, const T& value)
 	{
+		T* newbegin = DataAllocator::allocate(length);
 		T* newFinish = uninitialized_copy(begin_, positon, newbegin);
-		construct(newFinish, value);
-		++newFinish;
-		newFinish = uninitialized_copy(positon, end_, newFinish);
+ 		construct(newFinish, value);
+ 		++newFinish;
+ 		newFinish = uninitialized_copy(positon, end_, newFinish);
 
-		destroy(begin_, end_);
+		objDestroy(begin_, end_);
+ 
 		begin_ = newbegin;
 		end_ = newFinish;
+
+		return newbegin;
 	}
 
 	template <typename T, typename Alloc>
 	size_t BaseVector<T, Alloc>::size()const
 	{
 		return size_t(end_ - begin_);
+	}
+
+	template <typename T, typename Alloc>
+	void BaseVector<T, Alloc>::objDestroy(T* data)
+	{
+		destroy(data);
+		DataAllocator::deallocate(data);
+	}
+
+	template <typename T, typename Alloc>
+	void BaseVector<T, Alloc>::objDestroy(T* begin, T* end)
+	{
+		destroy(begin_, end_);
+		DataAllocator::deallocate(begin_, (end_-begin_));
 	}
 
 }

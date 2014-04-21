@@ -316,6 +316,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="iterator"
+				>
+				<File
+					RelativePath=".\iterator\BaseIterator.h"
+					>
+				</File>
+				<File
+					RelativePath=".\iterator\IteratorTraits.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="资源文件"
