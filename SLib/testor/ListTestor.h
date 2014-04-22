@@ -29,4 +29,21 @@ BOOST_AUTO_TEST_CASE (test1)
 	list.clear();
 	BOOST_CHECK(0 == list.size());
 }
+
+BOOST_AUTO_TEST_CASE (test2)
+{
+	struct Item{
+		Item(int _a):a_(_a){}
+
+		int a_;
+	};
+	slib::List<Item> list;
+	list.push_back(Item(1));
+	list.push_back(Item(2));
+
+	BOOST_CHECK(2 == (++list.begin())->a_);
+
+// 	list.pop_back();
+// 	BOOST_CHECK(1 == list.size());
+}
 BOOST_AUTO_TEST_SUITE_END( )
