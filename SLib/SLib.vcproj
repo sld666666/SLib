@@ -197,10 +197,6 @@
 			<Filter
 				Name="alloc"
 				>
-				<File
-					RelativePath=".\alloc\NodeAllocImpl.cpp"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="container"
@@ -236,14 +232,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\AllocProxy.h"
-					>
-				</File>
-				<File
-					RelativePath=".\alloc\AtomicFreeList.h"
-					>
-				</File>
-				<File
 					RelativePath=".\alloc\Construct.h"
 					>
 				</File>
@@ -257,14 +245,6 @@
 				</File>
 				<File
 					RelativePath=".\alloc\MallocAlloc.h"
-					>
-				</File>
-				<File
-					RelativePath=".\alloc\NodeAlloc.h"
-					>
-				</File>
-				<File
-					RelativePath=".\alloc\NodeAllocImpl.h"
 					>
 				</File>
 				<File
@@ -284,7 +264,15 @@
 				Name="container"
 				>
 				<File
+					RelativePath=".\container\BaseList.h"
+					>
+				</File>
+				<File
 					RelativePath=".\container\BaseVector.h"
+					>
+				</File>
+				<File
+					RelativePath=".\container\List.h"
 					>
 				</File>
 				<File
@@ -308,6 +296,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\testor\ListTestor.h"
+					>
+				</File>
+				<File
 					RelativePath=".\testor\UnInitializedTestor.h"
 					>
 				</File>
@@ -325,6 +317,10 @@
 				</File>
 				<File
 					RelativePath=".\iterator\IteratorTraits.h"
+					>
+				</File>
+				<File
+					RelativePath=".\iterator\ListIterator.h"
 					>
 				</File>
 			</Filter>

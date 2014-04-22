@@ -6,7 +6,8 @@
 //#include "testor/AllocatorTestor.h"
 
 //#include "testor/UnInitializedTestor.h"
-#include "testor/VectorTestor.h"
+//#include "testor/VectorTestor.h"
+#include "testor/ListTestor.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])

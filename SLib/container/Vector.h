@@ -9,6 +9,9 @@ namespace slib{
 		, public TypeDefinition<T>{
 
 	public:
+		typedef ValueType*			Iterator;
+		typedef const ValueType*	ConstIterator;
+
 		Vector(): Base(){}
 		Vector(const SizeType n,  const T& value);
 
