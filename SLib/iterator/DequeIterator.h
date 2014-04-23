@@ -43,6 +43,11 @@ namespace slib{
 
 		Reference operator*() const {return *cur;}
 		Pointer operator->() const {return cur;}
+		SizeType operator-()(const Self& x)const
+		{
+			return bufferSize() * (this->node-x.node -1)
+				+ (cur - first) + (x.last - x.cur);
+		}
 		Self& operator+=(size_t n)
 		{
 			this->advance(n);

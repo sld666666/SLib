@@ -1,5 +1,6 @@
 #pragma  once
 #include "../iterator/DequeIterator.h"
+#include "Vector.h"
 
 namespace slib{
 	template< typename T, typename Alloc>
@@ -7,17 +8,14 @@ namespace slib{
 		typedef DequeIterator<T>	Iterator;
 	public:
 		BaseDeque() 
-			: map_(0)
-			, mapSize_(0)
-			, begin_()
+			: begin_()
 			, end_()
 		{
 
 		}
 
 	protected:
-		T**			map_;
-		size_t		mapSize_;
+		Vector<T*>	map_;
 		Iterator	begin_;
 		Iterator	end_;
 

@@ -264,11 +264,19 @@
 				Name="container"
 				>
 				<File
+					RelativePath=".\container\BaseDeque.h"
+					>
+				</File>
+				<File
 					RelativePath=".\container\BaseList.h"
 					>
 				</File>
 				<File
 					RelativePath=".\container\BaseVector.h"
+					>
+				</File>
+				<File
+					RelativePath=".\container\Deque.h"
 					>
 				</File>
 				<File
@@ -313,6 +321,10 @@
 				>
 				<File
 					RelativePath=".\iterator\BaseIterator.h"
+					>
+				</File>
+				<File
+					RelativePath=".\iterator\DequeIterator.h"
 					>
 				</File>
 				<File
