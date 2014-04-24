@@ -304,6 +304,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\testor\DequeTestor.h"
+					>
+				</File>
+				<File
 					RelativePath=".\testor\ListTestor.h"
 					>
 				</File>

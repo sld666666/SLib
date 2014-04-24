@@ -28,6 +28,6 @@ namespace slib{
 	void MallocAlloc<inst>::deallocate(void*buffer)
 	{
 		free(buffer);
-		buffer = NULL;
+		//buffer = NULL;
 	}
 }

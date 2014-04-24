@@ -43,7 +43,7 @@ namespace slib{
 
 		Reference operator*() const {return *cur;}
 		Pointer operator->() const {return cur;}
-		SizeType operator-()(const Self& x)const
+		SizeType operator-(const Self& x)const
 		{
 			return bufferSize() * (this->node-x.node -1)
 				+ (cur - first) + (x.last - x.cur);
@@ -78,6 +78,9 @@ namespace slib{
 			--cur;
 			return *this;
 		}
+
+		bool operator==(const Self& value) const {return cur == value.cur;}
+		bool operator!=(const Self& value) const {return !(*this == value);}
 		
 		Reference operator[](size_t n) const {return *(*this + n);}
 
@@ -90,8 +93,20 @@ namespace slib{
 
 		void advance(size_t n)
 		{
-			const size_t bufferSize = bufferSize();
-			cur += n;
+			n +=1;
+
+			size_t bufferSize = Iterator::bufferSize();
+			size_t offset = (last - cur);
+			if(offset >= n){
+				cur += n;
+			}else{
+				n = n - offset;
+				size_t nodeOffset = n/bufferSize + 1;
+				setNode(node+nodeOffset);
+				cur = first;
+				cur += (n - (nodeOffset-1)*bufferSize-1);
+			}
+			
 		}
 	};
 }
