@@ -7,9 +7,11 @@ BOOST_AUTO_TEST_SUITE (LisTestor)
 BOOST_AUTO_TEST_CASE (test1)
 {
 	slib::List<int> list;
+	BOOST_CHECK(list.empty());
 	list.push_back(1);
  	list.push_back(2);
  	BOOST_CHECK(2 == list.size());
+	BOOST_CHECK(!list.empty());
 
 	slib::List<int> ::Iterator iter = list.begin();
  	BOOST_CHECK(1 == *iter);
@@ -43,7 +45,7 @@ BOOST_AUTO_TEST_CASE (test2)
 
 	BOOST_CHECK(2 == (++list.begin())->a_);
 
-// 	list.pop_back();
+ 	list.pop_back();
 // 	BOOST_CHECK(1 == list.size());
 }
 BOOST_AUTO_TEST_SUITE_END( )

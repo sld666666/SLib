@@ -52,7 +52,7 @@ namespace slib{
 	template<typename T, typename Alloc> 
 	bool List<T, Alloc>::empty() const 
 	{
-		return node_.next == node_;
+		return node_->next == node_;
 	}
 
 	template<typename T, typename Alloc>
@@ -124,7 +124,7 @@ namespace slib{
 	template<typename T, typename Alloc>
 	void List<T, Alloc>::pop_back()
 	{
-		erase(end());
+		erase(--end());
 	}
 
 	template<typename T, typename Alloc>

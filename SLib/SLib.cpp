@@ -8,7 +8,8 @@
 //#include "testor/UnInitializedTestor.h"
 //#include "testor/VectorTestor.h"
 //#include "testor/ListTestor.h"
-#include "testor/DequeTestor.h"
+//#include "testor/DequeTestor.h"
+#include "testor/StackTestor.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])
