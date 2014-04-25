@@ -9,7 +9,8 @@
 //#include "testor/VectorTestor.h"
 //#include "testor/ListTestor.h"
 //#include "testor/DequeTestor.h"
-#include "testor/StackTestor.h"
+//#include "testor/StackTestor.h"
+#include "testor/QueueTestor.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])

@@ -284,6 +284,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\container\Queue.h"
+					>
+				</File>
+				<File
 					RelativePath=".\container\Stack.h"
 					>
 				</File>
@@ -313,6 +317,10 @@
 				</File>
 				<File
 					RelativePath=".\testor\ListTestor.h"
+					>
+				</File>
+				<File
+					RelativePath=".\testor\QueueTestor.h"
 					>
 				</File>
 				<File
